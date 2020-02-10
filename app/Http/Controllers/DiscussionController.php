@@ -23,7 +23,7 @@ class DiscussionController extends Controller
      */
     public function create()
     {
-        //
+        return view('discussion.create');
     }
 
     /**
