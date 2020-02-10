@@ -7,12 +7,13 @@
             <form action="{{Route('discussions.store')}}" method="POST">
                 @csrf
                 <div class="form-group">
-                    <label for="title">Channel Name</label>
+                    <label for="title">Title</label>
                     <input class="form-control" placeholder="title" name="title">
                 </div>
                 <div class="form-group">
                     <label for="content">Content</label>
-                    <textarea class="form-control" cols="5" rows="5" name="content"></textarea>
+                    <input id="content" type="hidden" name="content">
+                    <trix-editor input="content"></trix-editor>
                 </div>
                 <div class="form-group">
                     <label for="channel">Channel</label>
@@ -22,9 +23,17 @@
                         @endforeach
                     </select>
                 </div>
-                <div class="btn btn-primary btn-sm">Add</div>
+                <button type="submit" class="btn btn-primary ">Create Discussion</button>
             </form>
 
         </div>
     </div>
+@endsection
+
+@section('css')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.2.1/trix.css">
+@endsection
+
+@section('js')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.2.1/trix.js"></script>
 @endsection
