@@ -38,7 +38,7 @@
                     </div>
 
                     <div>
-                        @if(auth()->user()->id === $discussion->author->id
+                        @if(auth()->user() && auth()->user()->id === $discussion->author->id
                                 && (!$discussion->bestReply || $discussion->bestReply->id !== $reply->id))
                             <form action="{{Route('disccussions.best-reply', [$discussion, $reply])}}" method="POST">
                                 @csrf
