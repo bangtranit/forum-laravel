@@ -38,7 +38,8 @@
                     </div>
 
                     <div>
-                        @if(auth()->user()->id === $discussion->author->id && $discussion->bestReply->id !== $reply->id)
+                        @if(auth()->user()->id === $discussion->author->id
+                                && (!$discussion->bestReply || $discussion->bestReply->id !== $reply->id))
                             <form action="{{Route('disccussions.best-reply', [$discussion, $reply])}}" method="POST">
                                 @csrf
                                 <button type="submit" class="btn btn-info btn-sm">Mark as best reply</button>
@@ -59,7 +60,7 @@
         </div>
     @endforelse
 
-{{--    {{ $discussion->replies()->paginate(10)->links() }}--}}
+    {{ $discussion->replies()->paginate(10)->links() }}
 
     <div class="card card-default my-5">
         <div class="card-header">

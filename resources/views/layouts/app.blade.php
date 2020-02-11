@@ -61,12 +61,14 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         @auth
-                            <a href="{{ Route('users.notifications') }}" class="nav-link">
-                                <span class="badge badge-info">
-                                    {{ auth()->user()->unreadNotifications->count() }}
-                                    Unread notifications
-                                </span>
-                            </a>
+                            @if(auth()->user()->unreadNotifications->count() > 0)
+                                <a href="{{ Route('users.notifications') }}" class="nav-link">
+                                    <span class="badge badge-info">
+                                        {{ auth()->user()->unreadNotifications->count() }}
+                                        Unread notifications
+                                    </span>
+                                </a>
+                            @endif
                         </span>
                         @endauth
                     </ul>

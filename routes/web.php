@@ -1,5 +1,5 @@
 <?php
-
+use LaravelForum\Http\Controllers\User\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
