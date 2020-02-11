@@ -16,7 +16,6 @@
                                class="float-right btn btn-sm btn-info ">
                                 View Reply
                             </a>
-
                     </li>
                 </ul>
             @empty
