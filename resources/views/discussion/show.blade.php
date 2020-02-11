@@ -10,6 +10,25 @@
         </div>
     </div>
 
+    @foreach($discussion->replies()->paginate(2) as $reply)
+        <div class="card my-5">
+            <div class="card-header">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <img width="30px" height="30px" style="border-radius: 20px"
+                             src="{{ generateAvatarForEmail($reply->owner->email) }}">
+                        <span> {{$reply->owner->name}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                {!! $reply->content !!}
+            </div>
+        </div>
+    @endforeach
+
+    {{ $discussion->replies()->paginate(2)->links() }}
+
     <div class="card card-default my-5">
         <div class="card-header">
             Add a reply
@@ -20,8 +39,8 @@
                     @csrf
 
                     <div class="form-group">
-                        <input type="hidden" name="reply" id="reply">
-                        <trix-editor input="reply">
+                        <input type="hidden" name="content" id="content">
+                        <trix-editor input="content">
                         </trix-editor>
                     </div>
                     <button type="submit" class="btn btn-primary">Add Reply</button>

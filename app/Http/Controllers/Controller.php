@@ -13,7 +13,8 @@ class Controller extends BaseController
 
     public function curdSucess($type = 'success', $message, $routeName){
         session()->flash($type, $message);
-        return redirect()->route($routeName);
-
+        if ($routeName)
+            return redirect()->route($routeName);
+        return redirect()->back();
     }
 }

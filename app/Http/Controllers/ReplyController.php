@@ -3,9 +3,16 @@
 namespace LaravelForum\Http\Controllers;
 
 use Illuminate\Http\Request;
+use LaravelForum\Discussion;
+use LaravelForum\Http\Requests\Reply\CreateReplyRequest;
 
 class ReplyController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->only(['store']);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -29,12 +36,18 @@ class ReplyController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param  CreateReplyRequest $request
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request)
+    public function store(CreateReplyRequest $request, Discussion $discussion)
     {
-        //
+//        dd($request['content']);
+        $validated = $request->validated();
+        auth()->user()->replies()->create([
+            'discussion_id' => $discussion->id,
+            'content' => $request['content']
+        ]);
+        return $this->curdSucess('success', 'Reply Added', '');
     }
 
     /**
