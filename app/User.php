@@ -2,15 +2,16 @@
 
 namespace LaravelForum;
 
-use LaravelForum\Reply;
-use LaravelForum\Discussion;
 use Illuminate\Notifications\Notifiable;
+use LaravelForum\Notifications\VerifyEmail;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
+
+    protected $table = 'users';
 
     /**
      * The attributes that are mass assignable.
@@ -48,5 +49,15 @@ class User extends Authenticatable
 
     public function replies(){
         return $this->hasMany(Reply::class);
+    }
+
+    /**
+     * Send the email verification notification.
+     *
+     * @return void
+     */
+    public function sendEmailVerificationNotification()
+    {
+        $this->notify(new VerifyEmail());
     }
 }

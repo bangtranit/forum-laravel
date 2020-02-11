@@ -8,7 +8,7 @@ use LaravelForum\Notifications\ReplyMarkedAsBestReply;
 
 class Discussion extends Model
 {
-    //
+    protected $table = 'discussions';
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
