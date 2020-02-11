@@ -36,7 +36,7 @@ class NewReplyAdded extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['mail', 'database'];
     }
 
     /**
@@ -62,7 +62,7 @@ class NewReplyAdded extends Notification
     public function toArray($notifiable)
     {
         return [
-            //
+            'discussion' => $this->discussion,
         ];
     }
 }
