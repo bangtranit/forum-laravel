@@ -56,12 +56,12 @@ class DiscussionController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  Discussion $discussion
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\Response|\Illuminate\View\View
      */
-    public function show($id)
+    public function show(Discussion $discussion)
     {
-        //
+        return view('discussion.show', compact('discussion'));
     }
 
     /**

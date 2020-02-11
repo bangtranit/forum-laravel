@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../cms-laravel-udemy/.idea/cms-laravel-udemy.iml" filepath="$PROJECT_DIR$/../cms-laravel-udemy/.idea/cms-laravel-udemy.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/forum-laravel.iml" filepath="$PROJECT_DIR$/.idea/forum-laravel.iml" />
     </modules>
   </component>
