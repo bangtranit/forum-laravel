@@ -2,6 +2,7 @@
 
 namespace LaravelForum\Http\Controllers;
 
+use LaravelForum\Reply;
 use LaravelForum\Discussion;
 use Illuminate\Http\Request;
 use LaravelForum\Http\Requests\Discussion\CreateDiscussionRequest;
@@ -96,5 +97,15 @@ class DiscussionController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * @param Discussion $discussion, Reply $reply
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function reply(Discussion $discussion, Reply $reply)
+    {
+        $discussion->markAsBestReply($reply);
+        return $this->curdSucess('success', 'Mark as best reply successfully', '');
     }
 }

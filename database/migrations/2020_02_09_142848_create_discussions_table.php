@@ -20,6 +20,7 @@ class CreateDiscussionsTable extends Migration
             $table->text('content');
             $table->string('slug')->unique(); //what is laravel -> what-is-laravel
             $table->unsignedBigInteger('channel_id');
+            $table->unsignedBigInteger('reply_id')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
