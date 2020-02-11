@@ -127,9 +127,11 @@
                             <div class="card-body">
                                 <ul class="list-group">
                                     @foreach($channels as $channel)
-                                        <li class="list-group-item">
-                                            {{$channel->name}}
-                                        </li>
+                                        <a href="{{ Route('discussions.index')}}?channel={{ $channel->slug }}">
+                                            <li class="list-group-item">
+                                                {{$channel->name}}
+                                            </li>
+                                        </a>
                                     @endforeach
                                 </ul>
                             </div>

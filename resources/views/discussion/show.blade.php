@@ -8,7 +8,7 @@
             <hr>
             {!! $discussion->content !!}
             @if($discussion->bestReply)
-                <div class="card text-white bg-info">
+                <div class="card border-primary mb-3 my-2">
                     <div class="card-header">
                         <div class="d-flex justify-content-between">
                             <div>

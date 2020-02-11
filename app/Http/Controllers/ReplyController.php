@@ -49,7 +49,9 @@ class ReplyController extends Controller
             'content' => $request['content']
         ]);
 
-        $discussion->author->notify(new NewReplyAdded($discussion));
+        if ($discussion->author->id !== auth()->user()->id){
+            $discussion->author->notify(new NewReplyAdded($discussion));
+        }
 
         return $this->curdSucess('success', 'Reply Added', '');
     }
